@@ -5,7 +5,7 @@ if number > 0:
     last = number % 10
 else:
     if (number % 10) != 0:
-        last = (10 - (number % 10))
+        last = (10 - (number % 10)) * -1
     else:
         last = 0
 if last > 5:
