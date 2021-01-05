@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+""" Module doc """
+
+
 class Square:
-    "Class square that defines a square"
+    """ Class square that defines a square"""
 
     def __init__(self, size=0):
         """ initialization of the class square"""
