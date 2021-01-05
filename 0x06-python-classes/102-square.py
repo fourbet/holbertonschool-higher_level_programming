@@ -32,12 +32,12 @@ class Square:
     def __ne__(self, other):
         """ different comparison"""
         return self.__size * self.__size != other.size * other.size
-    
-    def __gt__(self,other):
+
+    def __gt__(self, other):
         """ strict superior """
         return self.__size * self.__size > other.size * other.size
 
-    def __ge__(self,other):
+    def __ge__(self, other):
         """ superior or equal to zero """
         return self.__size * self.__size >= other.size * other.size
 
