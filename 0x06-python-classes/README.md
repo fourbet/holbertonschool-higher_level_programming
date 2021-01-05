@@ -1,4 +1,4 @@
-# Python - Classes and Object
+# Python - Classes and Objects
 
 ## Learning Objectives:
 
