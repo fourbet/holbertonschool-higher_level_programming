@@ -28,8 +28,7 @@ class Square:
     def __str__(self):
         """ prints in stdout the square with the character # """
         if self.__size == 0:
-            print()
-            return
+            return ""
         res = ""
         for l in range(self.__position[1]):
             res += "\n"
