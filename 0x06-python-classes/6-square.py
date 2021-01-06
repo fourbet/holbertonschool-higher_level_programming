@@ -27,6 +27,7 @@ class Square:
         """ prints in stdout the square with the character # """
         if self.__size == 0:
             print()
+            return
         for l in range(self.__position[1]):
             print()
         for i in range(self.__size):
