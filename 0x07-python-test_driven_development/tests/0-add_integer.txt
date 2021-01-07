@@ -1,0 +1,29 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+Two integers :
+>>> add_integer(10, 5)
+15
+
+One integer one float :
+>>> add_integer(4, 9.8)
+13
+
+Two float :
+>>> add_integer(2.0, 3.1)
+5
+
+A is a float('inf') :
+>>> add_integer(float('inf'), 5)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+Only one arg (a) :
+>>> add_integer(4)
+102
+
+String:
+>>> add_integer("Coucou", 4)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+
