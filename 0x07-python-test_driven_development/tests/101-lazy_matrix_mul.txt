@@ -1,0 +1,99 @@
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[ 7 10]
+ [15 22]]
+
+>>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13 16]]
+
+
+A and B can't be multiplied:
+
+>>> print(lazy_matrix_mul([[4, 5], [7, 4]], [[5]]))
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
+
+
+A is not a list:
+
+>>> print(lazy_matrix_mul("Hello", [4]))
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+
+B is not a list:
+
+>>> print(lazy_matrix_mul([4], "Hello"))
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+
+A is not a list of list:
+
+>>> print(lazy_matrix_mul([4], [[5]]))
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+
+B is not a list of list :
+
+>>> print(lazy_matrix_mul([[4]], [5]))
+Traceback (most recent call last):
+TypeError: m_b must be a list of lists
+
+
+A is empty:
+
+>>> print(lazy_matrix_mul([], [[5]]))
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+
+A is empty2 :
+
+>>> print(lazy_matrix_mul([[]], [[5]]))
+Traceback (most recent call last):
+ValueError: m_a can't be empty
+
+
+B is empty :
+
+>>> print(lazy_matrix_mul([[4]], []))
+Traceback (most recent call last):
+ValueError: m_b can't be empty
+
+
+B is empty2 :
+
+>>> print(lazy_matrix_mul([[4]], []))
+Traceback (most recent call last):
+ValueError: m_b can't be empty
+
+
+A has a element which is not an integer or a float :
+
+>>> print(lazy_matrix_mul([[4, 5], [7, "h"]], [[5]]))
+Traceback (most recent call last):
+TypeError: m_a should contain only integers or floats
+
+
+B has a element which is not an int or float :
+
+>>> print(lazy_matrix_mul([[5]], [[4, 5], [7, "h"]]))
+Traceback (most recent call last):
+TypeError: m_b should contain only integers or floats
+
+
+A is not a rectangle :
+
+>>> print(lazy_matrix_mul([[4, 5], [7, 8, 10]], [[5]]))
+Traceback (most recent call last):
+TypeError: each row of m_a must be of the same size
+
+
+B is not a rectangle :
+>>> print(lazy_matrix_mul( [[5]], [[4, 5], [7, 8, 12]]))
+Traceback (most recent call last):
+TypeError: each row of m_b must be of the same size
+
