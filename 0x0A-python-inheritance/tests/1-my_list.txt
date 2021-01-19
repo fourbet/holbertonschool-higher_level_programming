@@ -7,3 +7,7 @@
 [1, 5]
 >>> print(my_list)
 [5, 1]
+
+>>> my_list = MyList()
+>>> print(my_list)
+[]
