@@ -9,10 +9,9 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
-    triangle = [[1 for column in range(row + 1)]for row in range(n)]
-    if n >= 3:
-        for row in range(n):
-            for column in range(row + 1):
-                if column >= 1 and column < row:
-                    triangle[row][column] = triangle[row - 1][column - 1] + triangle[row - 1][column] 
-    return triangle
+    res = [[1 for col in range(row + 1)]for row in range(n)]
+    for row in range(n):
+        for col in range(row + 1):
+            if col >= 1 and col < row:
+                res[row][col] = res[row - 1][col - 1] + res[row - 1][col]
+    return res
