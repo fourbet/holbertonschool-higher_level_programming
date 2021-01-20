@@ -1,6 +1,6 @@
-## Python - Input/Output
+# Python - Input/Output
 
-# Learning Objectives
+## Learning Objectives
 - Why Python programming is awesome
 - How to open a file
 - How to write text in a file
