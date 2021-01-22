@@ -25,6 +25,13 @@ class Rectangle(Base):
         """ Returns the area value of the Rectangle instance """
         return self.__width * self.__height
 
+    def display(self):
+        """ Prints in stdout the Rectangle instance with the character # """
+        r = ""
+        for i in range(self.__height):
+            r += "#" * self.__width + "\n"
+        print(r, end="")
+
     def integer_validator(self, name, value):
         """ Checks if the input is an integer """
         if type(value) is not int:

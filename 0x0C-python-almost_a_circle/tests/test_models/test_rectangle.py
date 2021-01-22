@@ -67,3 +67,4 @@ class TestBase(unittest.TestCase):
         self.assertEqual(6, self.rect_2.area())
         self.assertEqual(16, self.rect_3.area())
         self.assertEqual(10, self.rect_4.area())
+
