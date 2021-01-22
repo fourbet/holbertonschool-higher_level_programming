@@ -43,3 +43,21 @@ class TestBase(unittest.TestCase):
         self.assertEqual(9, self.rect_3.y)
         self.assertEqual(1, self.rect_2.y)
         self.assertEqual(0, self.rect_4.y)
+
+    def test_not_integer(self):
+        tuples = ("A", True, [5], None, (4,), {3, 4})
+        for elem in tuples:
+            self.assertRaises(TypeError, Rectangle, elem, 5)
+            self.assertRaises(TypeError, Rectangle, 1, elem)
+            self.assertRaises(TypeError, Rectangle, 1, 1, elem)
+            self.assertRaises(TypeError, Rectangle, 1, 1, 1, elem)
+
+    def test_under_equal(self):
+        self.assertRaises(ValueError, Rectangle, -1, 5)
+        self.assertRaises(ValueError, Rectangle, 0, 5)
+        self.assertRaises(ValueError, Rectangle, 4, -1)
+        self.assertRaises(ValueError, Rectangle, 4, 0)
+
+    def test_under(self):
+        self.assertRaises(ValueError, Rectangle, 4, 5, -5)
+        self.assertRaises(ValueError, Rectangle, 4, 5, 5, -10)

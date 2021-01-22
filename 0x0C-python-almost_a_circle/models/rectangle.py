@@ -7,11 +7,34 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Class constructor """
+        self.integer_validator("width", width)
+        self.under_equal_validator("width", width)
+        self.integer_validator("height", height)
+        self.under_equal_validator("height", height)
+        self.integer_validator("x", x)
+        self.under_validator("x", x)
+        self.integer_validator("y", y)
+        self.under_validator("y", y)
         super().__init__(id)
         self.__width = width
         self.__height = height
         self.__x = x
         self.__y = y
+
+    def integer_validator(self, name, value):
+        """ Checks if the input is an integer """
+        if type(value) is not int:
+            raise TypeError("{} must be an integer".format(name))
+
+    def under_equal_validator(self, name, value):
+        """ Checks if the input is under or equals 0"""
+        if value <= 0:
+            raise ValueError("{} must be > 0".format(name))
+
+    def under_validator(self, name, value):
+        """ Checks if the input is under 0 """
+        if value < 0:
+            raise ValueError("{} must be >= 0".format(name))
 
     @property
     def width(self):
@@ -21,6 +44,8 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """ setter width """
+        integer_validator("width", value)
+        under_equal_validator("width", value)
         self.__width = value
 
     @property
@@ -31,6 +56,8 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """ setter height """
+        integer_validator("height", value)
+        under_equal_validator("height", value)
         self.__height = value
 
     @property
@@ -41,6 +68,8 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """ setter x """
+        integer_validator("x", value)
+        under_validator("x", value)
         self.__x = value
 
     @property
@@ -51,5 +80,7 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """ setter y """
+        integer_validator("y", value)
+        under_validator("y", value)
         self.__y = value
     
