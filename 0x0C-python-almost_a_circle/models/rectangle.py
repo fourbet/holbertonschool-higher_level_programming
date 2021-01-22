@@ -39,6 +39,16 @@ class Rectangle(Base):
                                                        self.__y, self.__width,
                                                        self.__height)
 
+    def update(self, *args):
+        """ Assigns an argument to each attribute """
+        lists= ("id","width", "height", "x", "y")
+        i = 0
+        for arg in args:
+            if (i > 4):
+                break
+            setattr(self, lists[i], arg)
+            i += 1
+
     def integer_validator(self, name, value):
         """ Checks if the input is an integer """
         if type(value) is not int:
