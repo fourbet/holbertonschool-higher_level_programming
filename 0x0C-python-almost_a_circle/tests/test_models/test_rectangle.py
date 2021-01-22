@@ -61,3 +61,9 @@ class TestBase(unittest.TestCase):
     def test_under(self):
         self.assertRaises(ValueError, Rectangle, 4, 5, -5)
         self.assertRaises(ValueError, Rectangle, 4, 5, 5, -10)
+
+    def test_area(self):
+        self.assertEqual(40, self.rect_1.area())
+        self.assertEqual(6, self.rect_2.area())
+        self.assertEqual(16, self.rect_3.area())
+        self.assertEqual(10, self.rect_4.area())

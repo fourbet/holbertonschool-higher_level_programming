@@ -21,6 +21,10 @@ class Rectangle(Base):
         self.__x = x
         self.__y = y
 
+    def area(self):
+        """ Returns the area value of the Rectangle instance """
+        return self.__width * self.__height
+
     def integer_validator(self, name, value):
         """ Checks if the input is an integer """
         if type(value) is not int:
@@ -44,8 +48,8 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """ setter width """
-        integer_validator("width", value)
-        under_equal_validator("width", value)
+        self.integer_validator("width", value)
+        self.under_equal_validator("width", value)
         self.__width = value
 
     @property
@@ -56,8 +60,8 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """ setter height """
-        integer_validator("height", value)
-        under_equal_validator("height", value)
+        self.integer_validator("height", value)
+        self.under_equal_validator("height", value)
         self.__height = value
 
     @property
@@ -68,8 +72,8 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """ setter x """
-        integer_validator("x", value)
-        under_validator("x", value)
+        self.integer_validator("x", value)
+        self.under_validator("x", value)
         self.__x = value
 
     @property
@@ -80,7 +84,7 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """ setter y """
-        integer_validator("y", value)
-        under_validator("y", value)
+        self.integer_validator("y", value)
+        self.under_validator("y", value)
         self.__y = value
     
