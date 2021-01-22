@@ -68,3 +68,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(16, self.rect_3.area())
         self.assertEqual(10, self.rect_4.area())
 
+    def test_str(self):
+        self.assertEqual(self.rect_1.__str__(), "[Rectangle] (1) 0/0 - 5/8")
+        self.assertEqual(self.rect_2.__str__(), "[Rectangle] (2) 1/1 - 2/3")
+        self.assertEqual(self.rect_3.__str__(), "[Rectangle] (12) 7/9 - 4/4")
+        self.assertEqual(self.rect_4.__str__(), "[Rectangle] (3) 7/0 - 2/5")

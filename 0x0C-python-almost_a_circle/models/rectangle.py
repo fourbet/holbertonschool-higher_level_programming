@@ -32,6 +32,12 @@ class Rectangle(Base):
             r += "#" * self.__width + "\n"
         print(r, end="")
 
+    def __str__(self):
+        """ Print method """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
+                                                       self.__y, self.__width,
+                                                       self.__height)
+
     def integer_validator(self, name, value):
         """ Checks if the input is an integer """
         if type(value) is not int:
