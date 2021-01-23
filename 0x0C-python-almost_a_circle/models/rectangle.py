@@ -57,6 +57,11 @@ class Rectangle(Base):
                     super().__init__()
                 else:
                     setattr(self, k, v)
+
+    def to_dictionary(self):
+        """ Returns the dictionary representation of a rectangle """
+        return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height,
+                'width': self.width}
         
 
     def integer_validator(self, name, value):

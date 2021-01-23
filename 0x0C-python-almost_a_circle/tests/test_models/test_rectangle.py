@@ -14,6 +14,15 @@ class TestBase(unittest.TestCase):
         self.rect_3 = Rectangle(4, 4, 7, 9, 12)
         self.rect_4 = Rectangle(2, 5, 7)
 
+    def test_to_dictionary(self):
+        self.assertEqual(self.rect_1.to_dictionary(),
+                         {'width': 5, 'height': 8, 'id': 1, 'x': 0, 'y': 0})
+        self.assertEqual(self.rect_2.to_dictionary(),
+                         {'width': 2, 'height': 3, 'id': 2, 'x': 1, 'y': 1})
+        self.assertEqual(self.rect_3.to_dictionary(),
+                         {'width': 4, 'height': 4, 'id': 12, 'x': 7, 'y': 9})
+        self.assertEqual(self.rect_4.to_dictionary(),
+                         {'width': 2, 'height': 5, 'id': 3, 'x': 7, 'y': 0})
     def test_id(self):
         self.assertEqual(1, self.rect_1.id)
         self.assertEqual(2, self.rect_2.id)
