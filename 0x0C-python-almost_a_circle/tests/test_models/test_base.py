@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Project: Python Almost a Circle """
 from models.base import Base
+from models.rectangle import Rectangle
 import unittest
 
 class TestBase(unittest.TestCase):
@@ -19,3 +20,4 @@ class TestBase(unittest.TestCase):
 
     def test_nb_objects(self):
         self.assertEqual(2, Base._Base__nb_objects)
+

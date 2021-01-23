@@ -5,7 +5,7 @@ from models.rectangle import Rectangle
 from models.base import Base
 import unittest
 
-class TestBase(unittest.TestCase):
+class TestSquare(unittest.TestCase):
     """ Unit test Square class """
 
     def setUp(self):
