@@ -46,11 +46,17 @@ class Rectangle(Base):
         for arg in args:
             if (i > 4):
                 break
-            setattr(self, lists[i], arg)
+            if arg is None and i == 0:
+                super().__init__()
+            else:
+                setattr(self, lists[i], arg)
             i += 1
         if kwargs is not None and i == 0:
             for k, v in kwargs.items():
-                setattr(self, k, v)
+                if k == "id" and v is None:
+                    super().__init__()
+                else:
+                    setattr(self, k, v)
         
 
     def integer_validator(self, name, value):
