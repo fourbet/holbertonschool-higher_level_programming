@@ -15,6 +15,16 @@ class TestBase(unittest.TestCase):
         self.s_3 = Square(4, 1, 1)
         self.s_4 = Square(2, 2, 1, 5)
 
+    def test_to_dictionary(self):
+        self.assertEqual(self.s_1.to_dictionary(),
+                         {'size': 5, 'id': 1, 'x': 0, 'y': 0})
+        self.assertEqual(self.s_2.to_dictionary(),
+                         {'size': 2, 'id': 2, 'x': 3, 'y': 0})
+        self.assertEqual(self.s_3.to_dictionary(),
+                         {'size': 4, 'id': 3, 'x': 1, 'y': 1})
+        self.assertEqual(self.s_4.to_dictionary(),
+                         {'size': 2, 'id': 5, 'x': 2, 'y': 1})
+
     def test_str(self):
         self.assertEqual(self.s_1.__str__(), "[Square] (1) 0/0 - 5")
         self.assertEqual(self.s_2.__str__(), "[Square] (2) 3/0 - 2")
