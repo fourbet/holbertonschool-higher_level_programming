@@ -146,3 +146,4 @@ class TestRectangle(unittest.TestCase):
 
         self.assertRaises(ValueError, self.rect_1.update, 5, 5, 5, -10)
         self.assertRaises(ValueError, self.rect_1.update, 5, 5, 5, 5, -10)
+
