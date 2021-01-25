@@ -2,6 +2,7 @@
 """ Project: Python - Almost a Circle """
 from models.base import Base
 
+
 class Rectangle(Base):
     """ Class Rectangle inheriths from Base """
 
@@ -35,13 +36,13 @@ class Rectangle(Base):
 
     def __str__(self):
         """ Print method """
-        return "[{}] ({}) {}/{} - {}/{}".format(type(self).__name__, self.id, self.__x,
-                                                       self.__y, self.__width,
-                                                       self.__height)
+        return "[{}] ({}) {}/{} - {}/{}".format(type(self).__name__, self.id,
+                                                self.__x, self.__y,
+                                                self.__width, self.__height)
 
     def update(self, *args, **kwargs):
         """ Assigns an argument to each attribute """
-        lists= ("id","width", "height", "x", "y")
+        lists = ("id", "width", "height", "x", "y")
         i = 0
         for arg in args:
             if (i > 4):
@@ -62,7 +63,6 @@ class Rectangle(Base):
         """ Returns the dictionary representation of a rectangle """
         return {'x': self.x, 'y': self.y, 'id': self.id, 'height': self.height,
                 'width': self.width}
-        
 
     def integer_validator(self, name, value):
         """ Checks if the input is an integer """
@@ -126,4 +126,3 @@ class Rectangle(Base):
         self.integer_validator("y", value)
         self.under_validator("y", value)
         self.__y = value
-    

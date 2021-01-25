@@ -25,10 +25,10 @@ class Square(Rectangle):
         """ setter of size """
         super(Square, type(self)).width.fset(self, value)
         super(Square, type(self)).height.fset(self, value)
-        
+
     def update(self, *args, **kwargs):
         """ Assigns an argument to each attribute """
-        lists= ("id","size", "x", "y")
+        lists = ("id", "size", "x", "y")
         i = 0
         for arg in args:
             if (i > 3):
@@ -47,4 +47,4 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """ Returns the dictionary representation of a square """
-        return {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}        
+        return {'id': self.id, 'x': self.x, 'size': self.size, 'y': self.y}
