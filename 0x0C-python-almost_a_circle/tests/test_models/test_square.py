@@ -4,6 +4,10 @@ from models.square import Square
 from models.rectangle import Rectangle
 from models.base import Base
 import unittest
+from unittest.mock import patch
+from io import StringIO
+import sys
+
 
 class TestSquare(unittest.TestCase):
     """ Unit test Square class """
@@ -14,6 +18,20 @@ class TestSquare(unittest.TestCase):
         self.s_2 = Square(2, 3)
         self.s_3 = Square(4, 1, 1)
         self.s_4 = Square(2, 2, 1, 5)
+
+    @patch('models.square')
+    def test_display_1(self, mocked_print):
+        s1 = Square(5)
+        s1.display()
+        self.assertEqual(sys.stdout.getvalue(), '#####\n#####\n#####\n#####\n#####\n')
+        s2 = Square(2, 2)
+        sys.stdout = StringIO()
+        s2.display()
+        self.assertEqual(sys.stdout.getvalue(), '  ##\n  ##\n')
+        sys.stdout = StringIO()
+        s3 = Square(3, 1, 3)
+        s3.display()
+        self.assertEqual(sys.stdout.getvalue(), '\n\n\n ###\n ###\n ###\n')
 
     def test_area(self):
         self.assertEqual(25, self.s_1.area())

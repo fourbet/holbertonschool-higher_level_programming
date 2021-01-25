@@ -3,6 +3,9 @@
 from models.base import Base
 from models.rectangle import Rectangle
 import unittest
+import sys
+from unittest.mock import patch, call
+from io import StringIO
 
 class TestRectangle(unittest.TestCase):
     """ Unit test Rectangle class """
@@ -13,6 +16,22 @@ class TestRectangle(unittest.TestCase):
         self.rect_2 = Rectangle(2, 3, 1, 1)
         self.rect_3 = Rectangle(4, 4, 7, 9, 12)
         self.rect_4 = Rectangle(2, 5, 7)
+        self.held, sys.stdout = sys.stdout, StringIO()
+
+    @patch('models.rectangle')
+    def test_display_1(self, mocked_print):
+        r1 = Rectangle(1, 1)
+        r1.display()
+        self.assertEqual(sys.stdout.getvalue(), '#\n')
+        r1 = Rectangle(2, 3, 2, 2)
+        sys.stdout = StringIO()
+        r1.display()
+        self.assertEqual(sys.stdout.getvalue(), '\n\n  ##\n  ##\n  ##\n')
+        sys.stdout = StringIO()
+        r2 = Rectangle(3, 2, 1, 0)
+        r2.display()
+        self.assertEqual(sys.stdout.getvalue(), ' ###\n ###\n')
+
 
     def test_to_dictionary(self):
         self.assertEqual(self.rect_1.to_dictionary(),
