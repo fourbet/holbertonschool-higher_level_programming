@@ -15,6 +15,12 @@ class TestSquare(unittest.TestCase):
         self.s_3 = Square(4, 1, 1)
         self.s_4 = Square(2, 2, 1, 5)
 
+    def test_area(self):
+        self.assertEqual(25, self.s_1.area())
+        self.assertEqual(4, self.s_2.area())
+        self.assertEqual(16, self.s_3.area())
+        self.assertEqual(4, self.s_4.area())
+
     def test_to_dictionary(self):
         self.assertEqual(self.s_1.to_dictionary(),
                          {'size': 5, 'id': 1, 'x': 0, 'y': 0})

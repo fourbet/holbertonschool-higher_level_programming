@@ -111,3 +111,38 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.rect_1.__str__(), "[Rectangle] (89) 1/3 - 4/2")
         self.rect_1.update(10, 5, 3, 4, x=1, height=2, y=3, width=4)
         self.assertEqual(self.rect_1.__str__(), "[Rectangle] (10) 4/3 - 5/3")
+
+
+    def test_update_not_integer(self):
+        tuples = ("A", True, [5], None, (4,), {3, 4})
+        for elem in tuples:
+
+            msg = "width must be an integer"
+            with self.assertRaises(TypeError) as e:
+                self.rect_1.update(4, elem)
+            self.assertEqual(msg, str(e.exception))
+
+            self.assertRaises(TypeError, self.rect_1.update, 5, elem)
+            self.assertRaises(TypeError, self.rect_1.update, 5, 5, elem)
+            self.assertRaises(TypeError, self.rect_1.update, 5, 5, 5, elem)
+            self.assertRaises(TypeError, self.rect_1.update, 5, 5, 5, 5, elem)
+
+    def test_update_under_equal(self):
+        msg = "width must be > 0"
+        with self.assertRaises(ValueError) as e:
+            self.rect_1.update(4, -10)
+        self.assertEqual(msg, str(e.exception))
+
+        self.assertRaises(ValueError, self.rect_1.update, 5, -5)
+        self.assertRaises(ValueError, self.rect_1.update, 5, 0)
+        self.assertRaises(ValueError, self.rect_1.update, 5, 5, -4)
+        self.assertRaises(ValueError, self.rect_1.update, 5, 5, 0)
+
+    def test_update_under(self):
+        msg = "x must be >= 0"
+        with self.assertRaises(ValueError) as e:
+            self.rect_1.update(4, 4, 4, -10)
+        self.assertEqual(msg, str(e.exception))
+
+        self.assertRaises(ValueError, self.rect_1.update, 5, 5, 5, -10)
+        self.assertRaises(ValueError, self.rect_1.update, 5, 5, 5, 5, -10)
