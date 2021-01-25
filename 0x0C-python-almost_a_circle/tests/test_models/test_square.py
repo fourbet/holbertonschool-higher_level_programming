@@ -24,7 +24,8 @@ class TestSquare(unittest.TestCase):
     def test_display_1(self, mocked_print):
         s1 = Square(5)
         s1.display()
-        self.assertEqual(sys.stdout.getvalue(), '#####\n#####\n#####\n#####\n#####\n')
+        self.assertEqual(sys.stdout.getvalue(),
+                         '#####\n#####\n#####\n#####\n#####\n')
         s2 = Square(2, 2)
         sys.stdout = StringIO()
         s2.display()
@@ -62,8 +63,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(self.s_1.__str__(), "[Square] (1) 0/0 - 5")
         self.assertEqual(self.s_2.__str__(), "[Square] (2) 3/0 - 2")
         self.assertEqual(self.s_3.__str__(), "[Square] (3) 1/1 - 4")
-        self.assertEqual(self.s_4.__str__(), "[Square] (5) 2/1 - 2")  
-
+        self.assertEqual(self.s_4.__str__(), "[Square] (5) 2/1 - 2")
 
     def test_id(self):
         self.assertEqual(1, self.s_1.id)
@@ -104,7 +104,6 @@ class TestSquare(unittest.TestCase):
         self.assertRaises(ValueError, Square, 4, -5)
         self.assertRaises(ValueError, Rectangle, 4, 5, -10)
 
-
     def test_update(self):
         self.s_1.update(1, 10, 10, 10)
         self.assertEqual(self.s_1.__str__(), "[Square] (1) 10/10 - 10")
@@ -131,7 +130,6 @@ class TestSquare(unittest.TestCase):
     def test_update_not_integer(self):
         tuples = ("A", True, [5], None, (4,), {3, 4})
         for elem in tuples:
-            
             msg = "width must be an integer"
             with self.assertRaises(TypeError) as e:
                 self.s_1.update(4, elem)

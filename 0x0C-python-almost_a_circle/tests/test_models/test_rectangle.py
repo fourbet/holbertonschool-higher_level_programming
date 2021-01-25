@@ -7,6 +7,7 @@ import sys
 from unittest.mock import patch, call
 from io import StringIO
 
+
 class TestRectangle(unittest.TestCase):
     """ Unit test Rectangle class """
 
@@ -36,7 +37,8 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 7, 2, 8, 1)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
-        self.assertEqual(dictionary, {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8})
+        self.assertEqual(dictionary, {'x': 2, 'width': 10, 'id': 1,
+                                      'height': 7, 'y': 8})
         self.assertIsInstance(dictionary, dict)
         self.assertIsInstance(json_dictionary, str)
 
@@ -113,13 +115,17 @@ class TestRectangle(unittest.TestCase):
 
     def test_update(self):
         self.rect_1.update(1, 10, 10, 10, 10)
-        self.assertEqual(self.rect_1.__str__(), "[Rectangle] (1) 10/10 - 10/10")
+        self.assertEqual(self.rect_1.__str__(),
+                         "[Rectangle] (1) 10/10 - 10/10")
         self.rect_1.update()
-        self.assertEqual(self.rect_1.__str__(), "[Rectangle] (1) 10/10 - 10/10")
+        self.assertEqual(self.rect_1.__str__(),
+                         "[Rectangle] (1) 10/10 - 10/10")
         self.rect_1.update(89)
-        self.assertEqual(self.rect_1.__str__(), "[Rectangle] (89) 10/10 - 10/10")
+        self.assertEqual(self.rect_1.__str__(),
+                         "[Rectangle] (89) 10/10 - 10/10")
         self.rect_1.update(89, 2)
-        self.assertEqual(self.rect_1.__str__(), "[Rectangle] (89) 10/10 - 2/10")
+        self.assertEqual(self.rect_1.__str__(),
+                         "[Rectangle] (89) 10/10 - 2/10")
         self.rect_1.update(89, 2, 3)
         self.assertEqual(self.rect_1.__str__(), "[Rectangle] (89) 10/10 - 2/3")
         self.rect_1.update(89, 2, 3, 4)
@@ -139,7 +145,6 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.rect_1.__str__(), "[Rectangle] (89) 1/3 - 4/2")
         self.rect_1.update(10, 5, 3, 4, x=1, height=2, y=3, width=4)
         self.assertEqual(self.rect_1.__str__(), "[Rectangle] (10) 4/3 - 5/3")
-
 
     def test_update_not_integer(self):
         tuples = ("A", True, [5], None, (4,), {3, 4})
@@ -174,4 +179,3 @@ class TestRectangle(unittest.TestCase):
 
         self.assertRaises(ValueError, self.rect_1.update, 5, 5, 5, -10)
         self.assertRaises(ValueError, self.rect_1.update, 5, 5, 5, 5, -10)
-
