@@ -3,6 +3,7 @@
 import json
 import os.path
 from os import path
+import csv
 
 
 class Base:
@@ -38,6 +39,25 @@ class Base:
                 list_dict.append(cls.to_dictionary(obj))
             file.write(cls.to_json_string(list_dict))
 
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ write the CSV string representation of a list_obj to a file """
+        with open("{}.csv".format(cls.__name__),
+                  mode='w', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            for obj in list_objs:
+                if cls.__name__ is "Rectangle":
+                    writer.writerow(['{}'.format(obj.id),
+                                     '{}'.format(obj.width),
+                                     '{}'.format(obj.height),
+                                     '{}'.format(obj.x),
+                                     '{}'.format(obj.y)])
+                if cls.__name__ is 'Square':
+                    writer.writerow(['{}'.format(obj.id),
+                                     '{}'.format(obj.size),
+                                     '{}'.format(obj.x),
+                                     '{}'.format(obj.y)])
+
     @staticmethod
     def from_json_string(json_string):
         """ returns the list of the JSON string representation json_string"""
@@ -65,3 +85,24 @@ class Base:
             for elem in list_output:
                 list_instance.append(cls.create(**elem))
         return list_instance
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ returns a list of instances """
+        if path.exists("{}.csv".format(cls.__name__)) is False:
+            return []
+        with open("{}.csv".format(cls.__name__), mode='r',
+                  encoding='utf-8') as f:
+            reader = csv.reader(f)
+            list_instance = []
+            for row in reader:
+                if len(row) == 5:
+                    dict = {'id': int(row[0]), 'width': int(row[1]),
+                            'height': int(row[2]), 'x': int(row[3]),
+                            'y': int(row[4])}
+                    list_instance.append(cls.create(**dict))
+                if len(row) == 4:
+                    dict = {'id': int(row[0]), 'size': int(row[1]),
+                            'x': int(row[2]), 'y': int(row[3])}
+                    list_instance.append(cls.create(**dict))
+            return list_instance
