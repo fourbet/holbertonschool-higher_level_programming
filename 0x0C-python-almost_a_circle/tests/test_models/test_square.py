@@ -18,6 +18,7 @@ class TestSquare(unittest.TestCase):
         self.s_2 = Square(2, 3)
         self.s_3 = Square(4, 1, 1)
         self.s_4 = Square(2, 2, 1, 5)
+        self.held, sys.stdout = sys.stdout, StringIO()
 
     @patch('models.square')
     def test_display_1(self, mocked_print):
@@ -32,6 +33,13 @@ class TestSquare(unittest.TestCase):
         s3 = Square(3, 1, 3)
         s3.display()
         self.assertEqual(sys.stdout.getvalue(), '\n\n\n ###\n ###\n ###\n')
+
+    def test_to_json_string(self):
+        s1 = Square(10, 2, 8, 1)
+        dictionary = s1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        self.assertIsInstance(dictionary, dict)
+        self.assertIsInstance(json_dictionary, str)
 
     def test_area(self):
         self.assertEqual(25, self.s_1.area())
@@ -48,6 +56,7 @@ class TestSquare(unittest.TestCase):
                          {'size': 4, 'id': 3, 'x': 1, 'y': 1})
         self.assertEqual(self.s_4.to_dictionary(),
                          {'size': 2, 'id': 5, 'x': 2, 'y': 1})
+        self.assertIsInstance(self.s_4.to_dictionary(), dict)
 
     def test_str(self):
         self.assertEqual(self.s_1.__str__(), "[Square] (1) 0/0 - 5")

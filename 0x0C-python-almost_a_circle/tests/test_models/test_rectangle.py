@@ -32,6 +32,13 @@ class TestRectangle(unittest.TestCase):
         r2.display()
         self.assertEqual(sys.stdout.getvalue(), ' ###\n ###\n')
 
+    def test_to_json_string(self):
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        dictionary = r1.to_dictionary()
+        json_dictionary = Base.to_json_string([dictionary])
+        self.assertEqual(dictionary, {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8})
+        self.assertIsInstance(dictionary, dict)
+        self.assertIsInstance(json_dictionary, str)
 
     def test_to_dictionary(self):
         self.assertEqual(self.rect_1.to_dictionary(),
@@ -42,7 +49,7 @@ class TestRectangle(unittest.TestCase):
                          {'width': 4, 'height': 4, 'id': 12, 'x': 7, 'y': 9})
         self.assertEqual(self.rect_4.to_dictionary(),
                          {'width': 2, 'height': 5, 'id': 3, 'x': 7, 'y': 0})
-        self.assertTrue(type(self.rect_4.to_dictionary()), dict)
+        self.assertIsInstance(self.rect_4.to_dictionary(), dict)
 
     def test_id(self):
         self.assertEqual(1, self.rect_1.id)
