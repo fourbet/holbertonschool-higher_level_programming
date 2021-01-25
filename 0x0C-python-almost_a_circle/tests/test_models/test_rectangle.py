@@ -42,6 +42,8 @@ class TestRectangle(unittest.TestCase):
                          {'width': 4, 'height': 4, 'id': 12, 'x': 7, 'y': 9})
         self.assertEqual(self.rect_4.to_dictionary(),
                          {'width': 2, 'height': 5, 'id': 3, 'x': 7, 'y': 0})
+        self.assertTrue(type(self.rect_4.to_dictionary()), dict)
+
     def test_id(self):
         self.assertEqual(1, self.rect_1.id)
         self.assertEqual(2, self.rect_2.id)
