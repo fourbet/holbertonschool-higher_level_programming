@@ -98,6 +98,27 @@ class TestRectangle(unittest.TestCase):
                  Rectangle(elem, 5)
             self.assertEqual(str(error.exception), "width must be an integer")
 
+    def test_not_integer_height(self):
+        tuples = ("A", True, [5], None, (4,), {3, 4})
+        for elem in tuples:
+            with self.assertRaises(TypeError) as error:
+                Rectangle(5, elem)
+            self.assertEqual(str(error.exception), "height must be an integer")
+
+    def test_not_integer_x(self):
+        tuples = ("A", True, [5], None, (4,), {3, 4})
+        for elem in tuples:
+            with self.assertRaises(TypeError) as error:
+                Rectangle(5, 5, elem)
+            self.assertEqual(str(error.exception), "x must be an integer")
+
+    def test_not_integer_y(self):
+        tuples = ("A", True, [5], None, (4,), {3, 4})
+        for elem in tuples:
+            with self.assertRaises(TypeError) as error:
+                Rectangle(5, 5, 5, elem)
+            self.assertEqual(str(error.exception), "y must be an integer")
+
     def test_under_equal(self):
         self.assertRaises(ValueError, Rectangle, -1, 5)
         self.assertRaises(ValueError, Rectangle, 0, 5)
