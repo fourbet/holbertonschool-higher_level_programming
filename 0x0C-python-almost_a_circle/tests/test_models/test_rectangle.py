@@ -91,6 +91,13 @@ class TestRectangle(unittest.TestCase):
             self.assertRaises(TypeError, Rectangle, 1, 1, elem)
             self.assertRaises(TypeError, Rectangle, 1, 1, 1, elem)
 
+    def test_not_integer_msg(self):
+         tuples = ("A", True, [5], None, (4,), {3, 4})
+         for elem in tuples:
+            with self.assertRaises(TypeError) as error:
+                 Rectangle(elem, 5)
+            self.assertEqual(str(error.exception), "width must be an integer")
+
     def test_under_equal(self):
         self.assertRaises(ValueError, Rectangle, -1, 5)
         self.assertRaises(ValueError, Rectangle, 0, 5)
