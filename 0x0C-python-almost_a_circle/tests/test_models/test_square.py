@@ -35,6 +35,15 @@ class TestSquare(unittest.TestCase):
         s3.display()
         self.assertEqual(sys.stdout.getvalue(), '\n\n\n ###\n ###\n ###\n')
 
+    def test_save_to_file(self):
+        Square.save_to_file(None)
+        Square.save_to_file([])
+        Square.save_to_file([Square(1)])
+
+    def test_load_from_file(self):
+        Square.load_from_file()
+        Square.load_from_file()
+
     def test_to_json_string(self):
         s1 = Square(10, 2, 8, 1)
         dictionary = s1.to_dictionary()

@@ -27,6 +27,15 @@ class TestRectangle(unittest.TestCase):
         r4 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3 })
         r5 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
 
+    def test_save_to_file(self):
+        Rectangle.save_to_file(None)
+        Rectangle.save_to_file([])
+        Rectangle.save_to_file([Rectangle(1, 1)])
+
+    def test_load_from_file(self):
+        Rectangle.load_from_file()
+        Rectangle.load_from_file()
+
     @patch('models.rectangle')
     def test_display_1(self, mocked_print):
         r1 = Rectangle(1, 1)
