@@ -30,6 +30,8 @@ class TestBase(unittest.TestCase):
                                       'height': 7, 'y': 8})
         self.assertIsInstance(dictionary, dict)
         self.assertIsInstance(json_dictionary, str)
+        Base.to_json_string([])
+        Base.to_json_string([ { 'id': 12 }])
 
     def test_from_json_string(self):
         list_input = [
