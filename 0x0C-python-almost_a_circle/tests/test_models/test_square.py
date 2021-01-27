@@ -102,7 +102,7 @@ class TestSquare(unittest.TestCase):
 
     def test_under(self):
         self.assertRaises(ValueError, Square, 4, -5)
-        self.assertRaises(ValueError, Rectangle, 4, 5, -10)
+        self.assertRaises(ValueError, Square, 4, 5, -10)
 
     def test_update(self):
         self.s_1.update(1, 10, 10, 10)
