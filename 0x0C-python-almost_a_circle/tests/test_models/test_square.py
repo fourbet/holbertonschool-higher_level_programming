@@ -36,9 +36,12 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(sys.stdout.getvalue(), '\n\n\n ###\n ###\n ###\n')
 
     def test_save_to_file(self):
+        s1 = Square(10, 10)
+        s2 = Square(1)
         Square.save_to_file(None)
         Square.save_to_file([])
-        Square.save_to_file([Square(1)])
+        Square.save_to_file([s1])
+        Square.save_to_file([s2])
 
     def test_load_from_file(self):
         Square.load_from_file()
