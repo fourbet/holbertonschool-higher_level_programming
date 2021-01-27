@@ -127,6 +127,12 @@ class TestSquare(unittest.TestCase):
         self.s_1.update(10, 5, 3, 4, x=1, size=2, y=3)
         self.assertEqual(self.s_1.__str__(), "[Square] (10) 3/4 - 5")
 
+    def test_create(self):
+        s1 = Square.create(**{'id' : 89})
+        s2 = Square.create(**{ 'id': 89, 'size': 1 })
+        s3 = Square.create(**{ 'id': 89, 'size': 1, 'x': 2 })
+        s4 = Square.create(**{ 'id': 89, 'size': 1, 'x': 2, 'y': 3 })
+
     def test_update_not_integer(self):
         tuples = ("A", True, [5], None, (4,), {3, 4})
         for elem in tuples:

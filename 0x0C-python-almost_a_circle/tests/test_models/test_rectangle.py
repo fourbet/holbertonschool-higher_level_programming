@@ -19,6 +19,14 @@ class TestRectangle(unittest.TestCase):
         self.rect_4 = Rectangle(2, 5, 7)
         self.held, sys.stdout = sys.stdout, StringIO()
 
+    def test_create(self):
+        r1 = Rectangle.create(**{ 'id': 89 })
+        self.assertEqual(r1.__str__(), "[Rectangle] (89) 0/0 - 1/1")
+        r2 = Rectangle.create(**{ 'id': 89, 'width': 1 })
+        r3 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2 })
+        r4 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3 })
+        r5 = Rectangle.create(**{ 'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 })
+
     @patch('models.rectangle')
     def test_display_1(self, mocked_print):
         r1 = Rectangle(1, 1)
@@ -118,6 +126,7 @@ class TestRectangle(unittest.TestCase):
             with self.assertRaises(TypeError) as error:
                 Rectangle(5, 5, 5, elem)
             self.assertEqual(str(error.exception), "y must be an integer")
+
 
     def test_under_equal(self):
         self.assertRaises(ValueError, Rectangle, -1, 5)
