@@ -1,6 +1,8 @@
 #!/usr/bin/node
 function fact (nbr) {
-  if (nbr === 0 || nbr === 1) {
+  if (Number.isNaN(nbr) === true) {
+      return 1;
+  } if (nbr === 0 || nbr === 1) {
     return 1;
   } else {
     return (nbr * fact(nbr - 1));
