@@ -5,4 +5,4 @@ exports.esrever = function (list) {
     ret.push(list[i]);
   }
   return ret;
-}
+};
