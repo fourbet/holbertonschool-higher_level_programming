@@ -22,5 +22,6 @@ if __name__ == "__main__":
         else:
             print(row[0])
         count += 1
+    print("")
     cur.close()
     conn.close()
