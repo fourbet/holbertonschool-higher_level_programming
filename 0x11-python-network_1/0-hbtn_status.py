@@ -2,7 +2,7 @@
 """ Python Network #1 Project """
 import urllib.request as ur
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     req = ur.Request('https://intranet.hbtn.io/status')
     with ur.urlopen(req) as response:
         html = response.read()
