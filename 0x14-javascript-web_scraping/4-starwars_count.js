@@ -9,5 +9,5 @@ request(process.argv[2], function (error, response, body) {
       return elem.characters.filter((url) => { return url.includes('18'); }).length;
     }).length;
     console.log(count);
-    }
+  }
 });
